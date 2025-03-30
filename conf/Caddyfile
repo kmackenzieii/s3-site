@@ -1,0 +1,18 @@
+{
+        filesystem site-s3 s3 {
+                bucket {$SITE_S3_BUCKET}
+                region {$AWS_REGION}
+
+                endpoint {$AWS_ENDPOINT_URL}
+        }
+}
+
+
+:80 {
+	encode zstd gzip
+	#respond "Hello, world!"
+
+	file_server {
+		fs site-s3
+	}
+}
