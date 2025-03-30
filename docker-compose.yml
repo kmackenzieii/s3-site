@@ -1,7 +1,6 @@
 services:
   caddy:
-    build:
-      context: .
+    image: ${CONTAINER_REGISTRY}s3-site
     restart: unless-stopped
     ports:
       - "8080:80"
